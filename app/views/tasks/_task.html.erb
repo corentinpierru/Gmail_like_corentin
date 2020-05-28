@@ -1,0 +1,15 @@
+<li id="<%= task.id %>">
+  <%= check_box_tag :check_box_done, 1, task.status , data: { remote: true, url: task_path(task.id), params: {status: !task.status}.to_param, method: "put" }%>
+  <% if task.status == true %>
+      <strike class ="text-muted"><%= task.title  %>
+      <% unless task.deadline.nil? %>
+        , to read: <%= task.deadline.strftime('%D')  %>
+      <% end %>
+      </strike>
+    <% else %>
+      <%= task.title  %>
+      <% unless task.deadline.nil? %>
+        , to read: <%= task.deadline.strftime('%D')  %>
+      <% end %>
+      <%end %>
+</li>

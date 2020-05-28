@@ -1,0 +1,30 @@
+
+<h1>Page email</h1>
+<%= link_to "Relever le courrier", email_index_path, class: "btn btn-info", method: :post , remote: true%>
+<div class="row d-flex border border-dark bg-light">
+  <div class='col-6'>
+    <p>Liste des emails</p>
+  </div>
+  <div class='col-6'>
+    <p>Emails sélectionnés</p>
+  </div>
+</div>
+
+<div class="row d-flex">
+<div id="email_list" class="border-bottom border-dark col-6 bg-light">
+  <% @email.each do |email| %>
+    <div id="<%=email.id%>" class="">
+        <% if email.read %>
+          <p><%= link_to "#{email.object}", email_path(email.id), remote: true%></p>
+        <% else %>
+          <strong><p><%= link_to "#{email.object}", email_path(email.id), remote: true%></p></strong>
+        <%end%> 
+  </div>
+  <%end%>
+</div>
+  <div id="email_show" class='col-6'></div>
+</div>
+
+
+
+
